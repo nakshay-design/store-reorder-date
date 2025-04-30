@@ -1,35 +1,10 @@
 <html>
 <head>
     <title>Store Reorder Date</title>
-    <!-- Include a datepicker library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" />
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
 </head>
 <body>
     <div>store-reorder-date</div>
-    <button id="reorder-date-btn">Select Reorder Date</button>
-    <input type="text" id="reorder-date" style="display:none;" />
-    <script>
-        $(document).ready(function() {
-            // Initialize datepicker
-            $("#reorder-date").datepicker();
 
-            // Show datepicker on button click
-            $("#reorder-date-btn").click(function() {
-                $("#reorder-date").datepicker("show");
-            });
-
-            // Capture the selected date
-            $("#reorder-date").on("change", function() {
-                var selectedDate = $(this).val();
-                console.log("Selected Reorder Date: " + selectedDate);
-                // Send the selected date to the server
-                $.post('/update-metaobject', { selectedDate: selectedDate }, function(response) {
-                    alert(response);
-                });
-            });
-        });
-    </script>
 </body>
 </html>
