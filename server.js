@@ -1,16 +1,17 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const Shopify = require('shopify-api-node');
+require('dotenv').config(); // Add this line to load environment variables
 
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const shopify = new Shopify({
-  shopName: 'ekta124.myshopify.com',
-  apiKey: '41cf8fae3fff1d37d588dc162829395e',
-  password: '5f266b9c2292dff7a34225fec26f04ba',
-  accessToken: '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'
+  shopName: process.env.SHOPIFY_SHOP_NAME,
+  apiKey: process.env.SHOPIFY_API_KEY,
+  password: process.env.SHOPIFY_API_SECRET,
+  accessToken: process.env.SHOPIFY_ACCESS_TOKEN
 });
 
 app.post('/update-metaobject', async (req, res) => {
