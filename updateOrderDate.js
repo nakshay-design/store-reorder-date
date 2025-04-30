@@ -13,7 +13,7 @@ async function updateOrderDate(orderId, customDate) {
     body: JSON.stringify({
       metafield: {
         namespace: 'custom',
-        key: 'custom_order_date',
+        key: 'reorder_date',
         value: customDate,
         value_type: 'string'
       }
@@ -25,4 +25,4 @@ async function updateOrderDate(orderId, customDate) {
 }
 
 // Example usage
-updateOrderDate('1234567890', '2023-10-15');
+updateOrderDate('6243808575762', '2023-10-15');
