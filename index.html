@@ -1,10 +1,38 @@
 <html>
 <head>
     <title>Store Reorder Date</title>
-
 </head>
 <body>
     <div>store-reorder-date</div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Create a new button element
+        var reorderButton = document.createElement('button');
+        reorderButton.innerHTML = 'Reorder Date';
+        reorderButton.id = 'reorder-date-button';
 
+        // Append the button to a specific location in the checkout page
+        var checkoutForm = document.querySelector('.checkout-form');
+        if (checkoutForm) {
+          checkoutForm.appendChild(reorderButton);
+        }
+
+        // Add event listener to the button
+        reorderButton.addEventListener('click', function() {
+          // Open a date picker when the button is clicked
+          var datePicker = document.createElement('input');
+          datePicker.type = 'date';
+          datePicker.id = 'reorder-date-picker';
+          checkoutForm.appendChild(datePicker);
+
+          // Add event listener to capture date changes
+          datePicker.addEventListener('change', function() {
+            var selectedDate = datePicker.value;
+            console.log('Selected date:', selectedDate);
+            // You can add additional logic here to handle the selected date
+          });
+        });
+      });
+    </script>
 </body>
 </html>
