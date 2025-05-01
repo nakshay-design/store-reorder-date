@@ -6,6 +6,10 @@ export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
   const { orderId, date } = req.query; // Get order ID and date from query parameters
+
+  // Ensure the date is in the correct format
+  const formattedDate = new Date(date).toISOString();
+
   const apiUrl = `https://ekta124.myshopify.com/admin/api/2023-10/orders/${orderId}/metafields.json`;
   const accessToken = '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';
 
@@ -20,7 +24,7 @@ export default async function handler(req, res) {
         metafield: {
           namespace: 'custom',
           key: 'reorder_date',
-          value: date,
+          value: formattedDate,
           value_type: 'string'
         }
       })
