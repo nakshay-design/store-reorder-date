@@ -67,7 +67,7 @@ function sendReminderEmail(email, orderId) {
   });
 
   const mailOptions = {
-    from: 'your-email@gmail.com',
+    from: 'magento125@gmail.com',
     to: email,
     subject: 'Order Reminder',
     text: `This is a reminder for your order with ID: ${orderId}.`
