@@ -28,7 +28,9 @@ export default async function handler(req, res) {
 
     if (!response.ok) {
       const errorText = await response.text();
-      throw new Error(`Error updating order date: ${response.status} ${response.statusText} - ${errorText}`);
+      console.error(`Error updating order date: ${response.status} ${response.statusText} - ${errorText}`);
+      res.status(response.status).json({ error: `Error updating order date: ${errorText}` });
+      return;
     }
 
     const data = await response.json();
