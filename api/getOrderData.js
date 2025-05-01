@@ -15,7 +15,8 @@ export default async function handler(req, res) {
     });
 
     if (!response.ok) {
-      throw new Error(`Error fetching order details: ${response.status} ${response.statusText}`);
+      const errorText = await response.text();
+      throw new Error(`Error fetching order details: ${response.status} ${response.statusText} - ${errorText}`);
     }
 
     const data = await response.json();
