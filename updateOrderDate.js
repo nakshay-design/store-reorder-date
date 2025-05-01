@@ -22,6 +22,9 @@ async function updateOrderDate(orderId, customDate) {
   const apiUrl = `https://ekta124.myshopify.com/admin/api/2023-10/orders/${orderId}/metafields.json`;
   const accessToken = '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';
 
+  // Ensure customDate is in the correct format
+  const formattedDate = new Date(customDate).toISOString();
+
   const response = await fetch(apiUrl, {
     method: 'POST',
     headers: {
@@ -32,7 +35,7 @@ async function updateOrderDate(orderId, customDate) {
       metafield: {
         namespace: 'custom',
         key: 'reorder_date',
-        value: customDate,
+        value: formattedDate,
         value_type: 'string'
       }
     })
@@ -46,7 +49,7 @@ async function updateOrderDate(orderId, customDate) {
 async function processOrder(orderId) {
   try {
     const orderDetails = await fetchOrderDetails(orderId);
-    const customDate = '2023-10-15'; // Replace with logic to determine the date
+    const customDate = '2026-10-15T00:00:00'; // Ensure the date includes time
     await updateOrderDate(orderId, customDate);
   } catch (error) {
     console.error('Error processing order:', error);
