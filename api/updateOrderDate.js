@@ -7,8 +7,8 @@ export default async function handler(req, res) {
 
   const { orderId, date } = req.query; // Get order ID and date from query parameters
 
-  // Ensure the date is in the correct format
-  const formattedDate = new Date(date).toISOString();
+  // Ensure the date is in the correct format (YYYY-MM-DD)
+  const formattedDate = new Date(date).toISOString().split('T')[0];
 
   const apiUrl = `https://ekta124.myshopify.com/admin/api/2023-10/orders/${orderId}/metafields.json`;
   const accessToken = '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';
