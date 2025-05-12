@@ -77,7 +77,7 @@ function sendReminderEmail(email, orderId) {
     if (error) {
       console.error('Error sending email:', error);
     } else {
-      console.log('Email sent successfully:', info.response);
+      console.log('Email sent successfully test:', info.response);
       console.log('Message ID:', info.messageId);
     }
   });
